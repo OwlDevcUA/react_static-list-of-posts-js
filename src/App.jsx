@@ -18,14 +18,14 @@ export const comments = commentsFromServer.map(comment => ({
   post: getPostById(comment.postId),
 }));
 
-function getCommentById(postId) {
+function getCommentsByPostId(postId) {
   return comments.filter(comment => comment.postId === postId);
 }
 
 export const posts = postsFromServer.map(post => ({
   ...post,
   user: getUserById(post.userId),
-  comments: getCommentById(post.id),
+  comments: getCommentsByPostId(post.id),
 }));
 
 export const App = () => (
